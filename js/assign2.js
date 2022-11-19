@@ -33,11 +33,12 @@ function outputGenres(){
 	}
 	document.write(`</select><br>`);
 	document.write(`<button onclick="outputResults()">Filter</button>`);
-	document.write(`<button>Clear</button>`);
+	document.write(`<button onclick="clear()">Clear</button>`);
 }
 
 function outputResults(){
 	
+//document.body.appendChild(form);	
 let results = [];	
 
 if (document.getElementById("titleButton").checked==true){
@@ -75,6 +76,14 @@ if (document.getElementById("titleButton").checked==true){
 	}
 		
 }
+
+function myFunction() {
+	document.getElementById("demo").innerHTML = outputResults();
+}
+
+ function clear(){  
+   	document.getElementById("form").reset();  
+ }   
 
 outputArtists();
 outputGenres();
