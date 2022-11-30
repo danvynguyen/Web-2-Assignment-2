@@ -3,23 +3,54 @@
 <head>
     <title>Assignment 2</title>
     <meta charset=utf-8>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Proxima Nova">
     <link rel="stylesheet" href="css/index.css">
 	<script src="js/artists.json"></script>
 	<script src="js/genres.json"></script>
 	<script src="js/sample-songs.json"></script>
+	<script src="js/assign2.js"></script>
 </head>
 <body>
 <header>
     <h1 class="center">Assignment 2</h1>
 </header>
 <main>
+	
+	<div id="credits">Credits</div>
+	<button id="playlistButton">Playlist</button>
+	
     <section class="song-search">
         <h1>Song Search</h1>
         <p>Please select a field: </p>
 		<form id="form">
-			<script src="js/assign2.js"></script>
+			<input type="radio" name="form" value="title" id="titleButton">
+            <label for="title">Title:</label>
+            <input type="text" name="title" class="title" id="titleInput"/><br>
+			<input type="radio" name="form" value="artist_name" id="artistButton">
+			<label for="artist">Artist:</label>
+			<select name="artist" id="artistInput"><option></option></select><br>
+			<input type="radio" name="form" value="genre_name" id="genreButton">
+			<label for="genre">Genre:</label>
+			<select name="genre" id="genreInput"><option></option></select><br>
+			<!--<button onclick="outputResults()" id="filterButton">Filter</button>-->
+			<div id="filterButton">Filter</div>
+			<button id="clearButton">Clear</button>
         </form>
     </section>
+	
+	<section class="song-results">
+		<h1>Search Results</h1>
+        <table id="songResults">
+            <tr>
+                <th id="titleHeader"></th>
+                <th id="artistHeader"></th>
+                <th id="yearHeader"></th>
+                <th id="genreHeader"></th>
+                <th id="popularityHeader"></th>
+                <th></th>
+            </tr>
+		</table>
+	</section>
     
 </main>
 <footer>
