@@ -39,7 +39,7 @@ songContent = `[{
 		},
 		"details": {
 			"duration": 244,
-			"bpm": 108,
+			"bpm": 108, 
 			"popularity": 73,
 			"loudness": -6
 		},

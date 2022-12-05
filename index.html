@@ -9,17 +9,17 @@
 	<script src="js/genres.json"></script>
 	<script src="js/sample-songs.json"></script>
 	<script src="js/assign2.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 </head>
 <body>
 <header>
     <h1 class="center">Assignment 2</h1>
 </header>
 <main>
-	
+	<div id="snackbar"></div>
 	<div id="credits">Credits</div>
-	<button id="playlistButton">Playlist</button>
-	
-    <section class="song-search">
+    <aside id="song-search">
+		<button id="playlistButton">Playlist</button>
         <h1>Song Search</h1>
         <p>Please select a field: </p>
 		<form id="form">
@@ -33,25 +33,65 @@
 			<label for="genre">Genre:</label>
 			<select name="genre" id="genreInput"><option></option></select><br>
 			<!--<button onclick="outputResults()" id="filterButton">Filter</button>-->
-			<div id="filterButton">Filter</div>
+			<button id="filterButton" type="button">Filter</button>
 			<button id="clearButton">Clear</button>
         </form>
-    </section>
+    </aside>
 	
-	<section class="song-results">
-		<h1>Search Results</h1>
+	<section id="song-results" class="hidden">
+		<h1>Search Results:</h1>
         <table id="songResults">
             <tr>
-                <th id="titleHeader"></th>
-                <th id="artistHeader"></th>
-                <th id="yearHeader"></th>
-                <th id="genreHeader"></th>
-                <th id="popularityHeader"></th>
+                <th id="titleHeader">Title</th>
+                <th id="artistHeader">Artist</th>
+                <th id="yearHeader">Year</th>
+                <th id="genreHeader">Genre</th>
+                <th id="popularityHeader">Popularity</th>
                 <th></th>
             </tr>
 		</table>
 	</section>
     
+	<section id="song-data" class='hidden'>
+		<button id="closeViewButton">Close View</button>
+		<h1 id="song-header"></h1>
+		<p>Analysis Data:</p>
+            <ul>
+				<!--outputs bpm data-->
+                <li id="bpm">BPM: </li>
+				<!--outputs energy data-->
+                <li id="energy">Energy: </li>
+				<!--outputs danceability data-->
+                <li id="danceability">Danceability: </li>
+				<!--outputs liveness data-->
+                <li id="liveness">Liveness: </li>
+				<!--outputs valence data-->
+                <li id="valence">Valence: </li>
+				<!--outputs acoustics data-->
+                <li id="acoustics">Acoustics: </li>
+				<!--outputs speechiness data-->
+                <li id="speechiness">Speechiness: </li>
+				<!--outputs popularity data-->
+                <li id="popularity">Popularity: </li>
+            </ul>
+		<canvas id="infoChart"></canvas>
+	</section>
+	
+	<section id="playlist" class="hidden">
+		<button id="closeViewButton">Close View</button>
+		<h1>Playlist Details:</h1>
+        <table id="playlistDetails">
+            <tr>
+                <th id="titleHeader">Title</th>
+                <th id="artistHeader">Artist</th>
+                <th id="yearHeader">Year</th>
+                <th id="genreHeader">Genre</th>
+                <th id="popularityHeader">Popularity</th>
+                <th></th>
+            </tr>
+		</table>
+	</section>
+	
 </main>
 <footer>
     
