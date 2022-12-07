@@ -50,9 +50,12 @@ footer {
 }
 
 #infoChart {
-	width:100px; 
-	height:100px;
-	background-color: white;
+	overflow: auto;
+	height: 400px;
+	width:400px;
+	position: absolute;
+	top: 60px;
+	margin-left: 300px;
 }
 
 #snackbar {

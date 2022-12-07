@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
 /* url of song api --- https versions hopefully a little later this semester */	
-const api = 'http://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.php';
+const api = 'https://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.php';
 	
 	//retrieve api and stores in localStorage
 	let file = [];
@@ -162,7 +162,7 @@ const api = 'http://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.p
 		
 	}
 	
-	//hides all elements except for search form.
+	//hides all elements except for search and results.
 	function outputSearch(){
 		if (document.querySelector("#song-search").getAttribute('class')=='hidden'){
 			document.querySelector("#song-search").classList.remove('hidden');
@@ -211,71 +211,9 @@ const api = 'http://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.p
 			console.log(document.getElementById('genreInput').value);
 		}
 		
-		//output song list of results
+		//output song list of the results
 		outputSongList(table, results);
-		
-		/*let output = `<tr>
-                <th id="titleHeader">Title</th>
-                <th id="artistHeader">Artist</th>
-                <th id="yearHeader">Year</th>
-                <th id="genreHeader">Genre</th>
-                <th id="popularityHeader">Popularity</th>
-                <th></th>
-            </tr>`;
-		for (let r of results) {
-			output+=
-			`<tr class="song">
-				<td onclick="function{viewSingleSong(r)}">${r.title}</td>
-				<td>${r.artist.name}</td>
-				<td>${r.year}</td>
-				<td>${r.genre.name}</td>
-				<td>${r.details.popularity}</td>
-				<td><button onclick="add(${r})">Add</button></td>
-			</tr>`;
-			/*tr2=document.querySelector(".song");			
-			addbutton(tr2, table);
-		}
-		
-		table.innerHTML = output;*/
-		
-		/*for (let r of results) {
-			let tr2 = document.createElement('tr');
-			tr2.setAttribute("class", "song");
-			
-			const title = document.createElement("td");
-			title.textContent = r.title;
-			title.addEventListener("click", function() {viewSingleSong(r)});
-			tr2.appendChild(title);
-		
-			const artist = document.createElement("td");
-			artist.textContent = r.artist.name;
-			tr2.appendChild(artist);
-		
-			const year = document.createElement("td");
-			year.textContent = r.year;
-			tr2.appendChild(year);
-		
-			const genre = document.createElement("td");
-			genre.textContent = r.genre.name;
-			tr2.appendChild(genre);
-		
-			const popularity = document.createElement("td");
-			popularity.textContent = r.details.popularity;
-			tr2.appendChild(popularity);
-		
-			const addButton = document.createElement("button");
-			addButton.textContent = "Add";
-			addButton.onclick = function() {
-				if (playlist.includes(r)!=true){
-					playlist.push(r);	
-					showSnackBar(`${r.title} was added to playlist`);
-				}
-			};
-		
-			tr2.appendChild(addButton);
-			table.appendChild(tr2);
-		}*/
-	
+
 	}
 	
 	//outputs playlist
@@ -313,35 +251,6 @@ const api = 'http://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.p
 				table.deleteRow(-1);
 			}
 		}
-		
-		/*let output = `<tr>
-                <th id="titleHeader">Title</th>
-                <th id="artistHeader">Artist</th>
-                <th id="yearHeader">Year</th>
-                <th id="genreHeader">Genre</th>
-                <th id="popularityHeader">Popularity</th>
-                <th></th>
-            </tr>`;
-		for (let r of playlist) {
-			output+=
-			`<tr class="song">
-				<td>${r.title}</td>
-				<td>${r.artist.name}</td>
-				<td>${r.year}</td>
-				<td>${r.genre.name}</td>
-				<td>${r.details.popularity}</td>
-				<td><button id="removeButton" type="button">Remove</button></td>
-				<script>
-					document.querySelector("#removeButton").onclick = function() {
-						playlist.splice(r.indexOf(),1);
-						table.deleteRow(playlist.indexOf(r));
-						outputPlaylist();
-					}
-				</script>
-			</tr>`;
-		}
-		
-		table.innerHTML = output;*/
 		for (let r of playlist) {
 			let tr2 = document.createElement('tr');
 			const title = document.createElement("td");
@@ -367,26 +276,14 @@ const api = 'http://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.p
 		
 			const removeButton = document.createElement("button");
 			removeButton.textContent = "Remove";
-			removeButton.onclick = function() {
-				//playlist.pop(r);
-				
+			removeButton.onclick = function() {				
 				playlist.splice(playlist.indexOf(r),1);
-				//table.removeChild(playlist.indexOf(r));
 				console.log(playlist.length);
 				console.log(playlist.indexOf(r));
 				outputPlaylist();
 			};
 			
-			
-			//removeButton.addEventListener('click', () => {
-      		//this = sessionStorage.getItem('key');
-				
-				//playlist.removeItem(this);
-			//})
-		
-			//console.log("song added!");
 			tr2.appendChild(removeButton);
-			//tr2.addEventListener("click", function() {viewSingleSong(r)});
 			table.appendChild(tr2);
 		} 
 	}
@@ -493,7 +390,7 @@ function sortTable(n) {
 			duration=minutes+":"+seconds;
 		}
 		
-		// header
+		// header details
 		document.querySelector("#song-header").textContent=song.title +", " +song.artist.name+" ("+type+"), "+song.genre.name+", "+song.year+", "+duration+" minutes";
 		
 		//song details/analytics
