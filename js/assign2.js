@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
 const api = 'https://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.php';
 	
 	//retrieve api and stores in localStorage
-	let file = [];
+	let getFile = [];
 
 	if(localStorage.length != 0){
     getFile = localStorage.getItem('key');
