@@ -371,10 +371,10 @@ const api = 'http://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.p
 				//playlist.pop(r);
 				
 				playlist.splice(playlist.indexOf(r),1);
-				table.removeChild(playlist.indexOf(r));
+				//table.removeChild(playlist.indexOf(r));
 				console.log(playlist.length);
 				console.log(playlist.indexOf(r));
-				//outputPlaylist();
+				outputPlaylist();
 			};
 			
 			
