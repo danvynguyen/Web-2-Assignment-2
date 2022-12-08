@@ -56,6 +56,7 @@ th, td {
 
 th {
 	text-align: center;
+	cursor: pointer;
 }
 
 .navbutton {
@@ -65,12 +66,12 @@ th {
 }
 
 #playlistDetails{
-	width: 800px;
+	width: 600px;
 }
 
 #playlist {
 	  margin-left: auto;
-  margin-right: auto;
+      margin-right: auto;
 }
 
 #playlistButton {
