@@ -13,7 +13,7 @@
 </head>
 <body>
 <header>
-    <h1 class="center">Assignment 2</h1>
+    <h1 class="nav">Assignment 2</h1>
 </header>
 <main>
 	<div id="snackbar"></div>
@@ -39,7 +39,7 @@
     </aside>
 	
 	<section id="song-results" class="">
-		<h1>Search Results:</h1>
+		<h1 id="searchHeader">Search Results:</h1>
         <table id="songResults">
 		</table>
 	</section>
@@ -71,7 +71,6 @@
 	
 	<section id="playlist" class="hidden">
 		<button id="closeViewButton" class="navbutton">Close View</button>
-		<button id="clearPlaylistButton">Clear Playlist</button>
 		<h1>Playlist Details:</h1>
 		<div id="numSongs"></div>
         <table id="playlistDetails">
@@ -84,6 +83,7 @@
                 <th></th>
             </tr>
 		</table>
+		<button id="clearPlaylistButton">Clear Playlist</button>
 	</section>
 	
 </main>

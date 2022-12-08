@@ -36,7 +36,8 @@ const api = 'https://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.
 
 	//display name and github link
 	function mouseOver() {
-  		credits.innerHTML='<p>Author: Danvy Nguyen</p><a href="https://github.com/danvynguyen/danvynguyen.github.io">Github Link</a>';
+  		//credits.innerHTML='<p>Author: Danvy Nguyen</p><a href="https://github.com/danvynguyen/danvynguyen.github.io">Github Link</a>';
+		showCredits();
 	}
 
 	//when user stops hovering over credits, div will return to defualt credit label
@@ -132,6 +133,9 @@ const api = 'https://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.
 			const title = document.createElement("td");
 			title.textContent = r.title;
 			title.addEventListener("click", function() {viewSingleSong(r)});
+			title.onmouseover=function(){title.style.textDecoration = "underline"};
+			title.onmouseout=function(){title.style.textDecoration = "none"};
+			title.style.cursor="pointer";
 			tr2.appendChild(title);
 		
 			const artist = document.createElement("td");
@@ -176,6 +180,12 @@ const api = 'https://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.
 		if (document.querySelector("#song-data").getAttribute('class')!='hidden'){
 			document.querySelector("#song-data").classList.toggle('hidden');
 		}
+		
+		//resets table
+		while (table.hasChildNodes()) {
+    		table.removeChild(table.firstChild);
+  		}
+		
 		//displays all songs by default
 		const songTable = document.querySelector("#songResults");
 		outputSongList(songTable, songs);
@@ -196,7 +206,7 @@ const api = 'https://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.
     		table.removeChild(table.firstChild);
   		}
 		
-		//creates array of results based on user specifications.
+		//checks which radio buttons are pressed and filters based on user specifications.
 		let results = [];	
 		if (document.querySelector('#titleButton').checked==true){
 			results = songs.filter(s=>s.title.toLowerCase().includes(document.getElementById('titleInput').value.toLowerCase()));
@@ -245,6 +255,41 @@ const api = 'https://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.
 		
 		const table = document.querySelector('#playlistDetails');
 
+		const headerRow = document.createElement("tr");
+		
+		const titleHeader = document.createElement("th");
+		titleHeader.textContent="Title";
+		titleHeader.addEventListener("click", function(){sortTable(0)});
+		headerRow.appendChild(titleHeader);
+		
+		const artistHeader = document.createElement("th");
+		artistHeader.textContent="Artist";
+		artistHeader.addEventListener("click", function(){sortTable(1)});
+		headerRow.appendChild(artistHeader);
+		
+		const yearHeader = document.createElement("th");
+		yearHeader.textContent="Year";
+		yearHeader.addEventListener("click", function(){sortTable(2)});
+		headerRow.appendChild(yearHeader);
+		
+		const genreHeader = document.createElement("th");
+		genreHeader.textContent="Genre";
+		genreHeader.addEventListener("click",function(){sortTable(3)});
+		headerRow.appendChild(genreHeader);
+		
+		const popHeader = document.createElement("th");
+		popHeader.textContent="Popularity";
+		popHeader.addEventListener("click",function(){sortTable(4)});
+		headerRow.appendChild(popHeader);
+		
+		//style so all headers are centered.
+		const ths = document.querySelectorAll("th");
+		for (let th of ths) {
+			th.style.textAlign="center";
+		}
+		
+		table.appendChild(headerRow);
+		
 		if (document.querySelectorAll(".song").length>0){
 			for (let i=0; i<=document.querySelectorAll(".song").length;i++){
 				console.log(document.querySelectorAll(".song").length);
@@ -256,6 +301,9 @@ const api = 'https://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.
 			const title = document.createElement("td");
 			title.textContent = r.title;
 			title.addEventListener("click", function() {viewSingleSong(r)});
+			title.onmouseover=function(){title.style.textDecoration = "underline"};
+			title.onmouseout=function(){title.style.textDecoration = "none"};
+			title.style.cursor="pointer";
 			tr2.appendChild(title);
 		
 			const artist = document.createElement("td");
@@ -414,7 +462,17 @@ function sortTable(n) {
 				color: "black",
     			backgroundColor: "rgba(200,0,0,0.2)",
     			data: [song.analytics.danceability, song.analytics.energy, song.analytics.speechiness, song.analytics.acousticness, song.analytics.liveness, song.analytics.valence]
-  			}]
+  			}],
+			options: {
+				scale: {
+      				gridLines: {
+        			color: 'black'
+      				},
+      				angleLines: {
+        			color: 'black'
+      				}
+    			},
+			},
 		};
 		
 		//creates radar chart
@@ -434,5 +492,15 @@ function sortTable(n) {
          snack.classList.remove("show");
       }, 3000);
    }
+	
+	function showCredits() {
+      const credits = document.querySelector("#snackbar");
+      credits.innerHTML = '<p>Author: Danvy Nguyen</p><a href="https://github.com/danvynguyen/danvynguyen.github.io">Github Link</a>';
+      credits.classList.add("show");
+      setTimeout( () => {
+         credits.classList.remove("show");
+      }, 5000);
+   }
+	
 	
 });

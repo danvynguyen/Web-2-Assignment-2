@@ -1,3 +1,14 @@
+.nav {
+	margin-top:0%;
+	height: 50px;
+}
+
+button {
+	background-color: purple;
+	color:white;
+	cursor: pointer;
+}
+
 .hidden {
 	display: none;
 }
@@ -8,15 +19,16 @@ option {
 
 body {
     font-family: 'Proxima Nova', sans-serif;
-    background: purple;
-    color: white;
+    background-image: linear-gradient(white, lightblue);
+    color: black;
+	height: 100vh;
 }
 
 #credits {
 	position: absolute;
 	right: 50px;
 	top: 4%;
-	background-color: darkgray;
+	cursor: pointer;
 }
 
 .song-search, .song-results {
@@ -24,6 +36,8 @@ body {
 }
 
 #song-results { 
+	color:black;
+	background-color: white;
 	overflow: auto;
 	height: 600px;
 	width:920px;
@@ -31,6 +45,13 @@ body {
 	position: absolute;
 	top: 60px;
 	margin-left: 300px;
+	border-style: inset;
+	table-layout: fixed;
+}
+
+th, td {
+	text-align: center;
+	width: 400px;
 }
 
 th {
@@ -43,9 +64,32 @@ th {
 	top: 4%;
 }
 
+#playlistDetails{
+	width: 800px;
+}
+
+#playlist {
+	  margin-left: auto;
+  margin-right: auto;
+}
+
+#playlistButton {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+#clearPlaylistButton {
+	right:120px;
+}
+
 footer {
-	position:absolute;
-	bottom: 0px;
+	position: fixed;
+	margin-bottom: 0px;
 	text-align: center;	
 }
 
